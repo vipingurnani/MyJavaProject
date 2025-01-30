@@ -1,0 +1,23 @@
+name: Java CI Workflow
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow when code is pushed to 'main' branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # This specifies a Linux environment for running the workflow
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # Action to checkout your code from GitHub
+
+      - name: Set up Java
+        uses: actions/setup-java@v3  # Action to set up the Java environment
+        with:
+          java-version: '17'  # Set Java version to 17 (use the version required for your project)
+
+      - name: Run tests with Maven
+        run: mvn test  # Command to run Maven tests (you need Maven set up in your project)
+
